@@ -9,12 +9,12 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Local Storage</title>
+    <title>Local and session Storage</title>
   </head>
   <body data-color-scheme="dark">
     <main>
       <div class="container">
-        <h1>Sign Up</h1>
+        <h1 class="mt-5">Sign Up</h1>
         <form action="submit">
           <h2 id="user-display" class="h5">Username</h2>
           <div class="input-group flex-nowrap">
@@ -32,6 +32,17 @@
             <button type="button" id="sign-out" class="btn btn-outline-danger">Delete</button>
           </div>
         </form>
+        <div class="mt-5 d-flex justify-content-center">
+          <button type="button" class="btn btn-primary position-relative">
+            Inbox
+            <span
+              id="notifications"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
+        </div>
       </div>
     </main>
     <script

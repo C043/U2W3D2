@@ -15,10 +15,7 @@ form.onsubmit = (ev) => {
   ev.preventDefault();
   const userNameValue = document.getElementById("user-name").value;
   localStorage.setItem("Username", userNameValue);
-  const displayUser = document.getElementById("user-display");
-  displayUser.classList.remove("opacity-0");
-  displayUser.classList.add("opacity-100");
-  displayUser.innerHTML = userNameValue;
+  showUser();
   form.reset();
 };
 
@@ -33,4 +30,26 @@ deleteBtn.onclick = () => {
   displayUser.innerText = "Username";
 };
 
-window.addEventListener("DOMContentLoaded", showUser);
+let counter = 0;
+
+const timePassing = () => {
+  const secondsValue = sessionStorage.getItem("Seconds");
+  if (secondsValue) {
+    counter = secondsValue;
+    const notifications = document.getElementById("notifications");
+    notifications.innerText = sessionStorage.getItem("Seconds");
+  }
+  setInterval(() => {
+    counter++;
+    sessionStorage.setItem("Seconds", counter);
+    const notifications = document.getElementById("notifications");
+    notifications.innerText = sessionStorage.getItem("Seconds");
+  }, 1000);
+};
+
+const startup = () => {
+  showUser();
+  timePassing();
+};
+
+window.addEventListener("DOMContentLoaded", startup);
