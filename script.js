@@ -31,18 +31,20 @@ deleteBtn.onclick = () => {
 };
 
 let counter = 0;
+const notifications = document.getElementById("notifications");
 
 const timePassing = () => {
   const secondsValue = sessionStorage.getItem("Seconds");
   if (secondsValue) {
     counter = secondsValue;
-    const notifications = document.getElementById("notifications");
+    notifications.innerText = sessionStorage.getItem("Seconds");
+  } else {
+    sessionStorage.setItem("Seconds", counter);
     notifications.innerText = sessionStorage.getItem("Seconds");
   }
   setInterval(() => {
     counter++;
     sessionStorage.setItem("Seconds", counter);
-    const notifications = document.getElementById("notifications");
     notifications.innerText = sessionStorage.getItem("Seconds");
   }, 1000);
 };
